@@ -43,7 +43,7 @@ class DataIngestion():
             
             # Reading the data from source
             df = pd.read_parquet('https://github.com/abbeymaj80/my-ml-datasets/raw/master/project_datasets/gemstones/train.parquet')
-            
+                        
             # Splitting the dataset into a train and test set
             train_set, test_set = train_test_split(df, test_size=0.33, random_state=42)
             
