@@ -20,6 +20,14 @@ def test_data_path():
 def test_check_artifacts_folder(path='artifacts'):
     assert os.path.exists('artifacts') is True
 
+# Verify that the train data file exists
+def test_check_train_data_path(train_data_path):
+    assert os.path.exists(train_data_path) is True
+
+# Verify that the test data file exists
+def test_check_test_data_path(test_data_path):
+    assert os.path.exists(test_data_path) is True
+
 # Verifying that the train set has 11 columns
 def test_count_trainset_columns(train_data_path):
     df_train = pd.read_parquet(train_data_path)
