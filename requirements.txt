@@ -6,4 +6,6 @@ dill
 Flask
 flask_cors
 pytest
--e .
+pyarrow
+fastparquet
+#-e .
