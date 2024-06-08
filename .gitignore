@@ -166,3 +166,4 @@ cython_debug/
 .log
 src/*[Ll]ogs
 logs/
+LOG_FILE_PATH
