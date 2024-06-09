@@ -43,6 +43,9 @@ class DataIngestion():
             
             # Reading the data from source
             df = pd.read_parquet('https://github.com/abbeymaj80/my-ml-datasets/raw/master/project_datasets/gemstones/train.parquet')
+            
+            # Dropping the id, depth and table columns
+            df.drop(labels=['id', 'depth', 'table'], axis=1, inplace=True)
                         
             # Splitting the dataset into a train and test set
             train_set, test_set = train_test_split(df, test_size=0.33, random_state=42)
@@ -59,3 +62,8 @@ class DataIngestion():
         
         except Exception as e:
             raise CustomException(e, sys)
+
+
+if __name__ == '__main__':
+    obj = DataIngestion()
+    obj.initiate_data_ingestion()

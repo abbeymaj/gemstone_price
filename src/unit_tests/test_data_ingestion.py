@@ -28,12 +28,28 @@ def test_check_train_data_path(train_data_path):
 def test_check_test_data_path(test_data_path):
     assert os.path.exists(test_data_path) is True
 
-# Verifying that the train set has 11 columns
+# Verifying that the train set has 8 columns
 def test_count_trainset_columns(train_data_path):
     df_train = pd.read_parquet(train_data_path)
-    assert len(list(df_train.columns)) == 11
+    assert len(list(df_train.columns)) == 8
 
-# Verifying that the test set has 11 columns
+# Verifying that the dropped columns (id, depth, table)
+# are not present in the train set.
+def test_no_dropped_cols_trainset(train_data_path):
+    df_train = pd.read_parquet(train_data_path)
+    train_cols = list(df_train.columns)
+    dropped_cols = ['id', 'depth', 'table']
+    assert all(e in train_cols for e in dropped_cols) is False
+
+# Verifying that the test set has 8 columns
 def test_count_testset_columns(test_data_path):
     df_test = pd.read_parquet(test_data_path)
-    assert len(list(df_test.columns)) == 11
+    assert len(list(df_test.columns)) == 8
+
+# Verifying that the dropped columns (id, depth, table)
+# are not present in the test set.
+def test_no_dropped_cols_testset(test_data_path):
+    df_test = pd.read_parquet(test_data_path)
+    test_cols = list(df_test.columns)
+    dropped_cols = ['id', 'depth', 'table']
+    assert all(e in test_cols for e in dropped_cols) is False
