@@ -7,11 +7,8 @@ from datetime import datetime
 LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
 
 # Creating the logs directory for the project
-logs_path = os.path.join(os.getcwd(), 'logs')
-os.makedirs(logs_path, exist_ok=True)
-
-# Joining the logs directory path and the log file path
-LOG_FILE_PATH = os.path.join(logs_path, LOG_FILE)
+LOG_FILE_PATH = os.path.join('logs', LOG_FILE)
+os.makedirs(os.path.dirname(LOG_FILE_PATH), exist_ok=True)
 
 # Overriding the basicConfig of the logging package to include the new
 # log file format and path
