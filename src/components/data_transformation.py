@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn import set_config
 set_config(transform_output='pandas')
 from src.utils import create_aspect_features
+from src.utils import save_object
 from src.logger import logging
 from src.exception import CustomException 
 from src.components.config_entity import DataTransformationConfig
@@ -130,14 +131,46 @@ class DataTransformation():
         ----------------
         Returns:
         ----------------
-        train_arr : numpy array - The array used for training the model.
-        test_arr : numpy array - The array used for testing the model.
+        train_set : parquet file - The file used for training the model.
+        test_set : parquet file - The array used for testing the model.
         preprocessor object path : str - The path in which the preprocessor object 
         is stored.
         ================================================================================
         '''
-        try:
-            pass
+        try:         
+            # Reading the train and test datasets
+            train_df = pd.read_parquet(train_path)
+            test_df = pd.read_parquet(test_path)
+            
+            # Instantiating the preprocessing object
+            preprocessor_obj = self.create_data_transformation_object()
+            
+            # Creating the train feature and target sets
+            input_feature_train_df = train_df.drop(labels=['price'], axis=1)
+            input_target_train_df = train_df[['price']]
+            
+            # Creating the test feature and target sets
+            input_feature_test_df = test_df.drop(labels=['price'], axis=1)
+            input_target_test_df = test_df[['price']]
+            
+            # Transforming the train and test feature sets
+            input_feature_train_arr = preprocessor_obj.fit_transform(input_feature_train_df)
+            input_feature_test_arr = preprocessor_obj.transform(input_feature_test_df)
+            
+            # Combining the transformed train and test feature set with the target sets
+            input_train_combined = pd.concat([input_feature_train_arr, input_target_train_df], axis=1)
+            input_test_combined = pd.concat([input_feature_test_arr, input_target_test_df], axis=1)
+            
+            # Saving the preprocessor object
+            save_object(
+                file_path=self.data_transformation_config.preprocessor_obj_path,
+                object=preprocessor_obj
+            )
+            
+            return(
+                input_train_combined,
+                input_test_combined
+            )
         
         except Exception as e:
             raise CustomException(e, sys)
