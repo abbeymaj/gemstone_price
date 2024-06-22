@@ -3,8 +3,8 @@ import sys
 import pandas as pd
 from sklearn import set_config
 set_config(transform_output='pandas')
-from src.utils import create_aspect_features
-from src.utils import save_object
+from src.project_utils import create_aspect_features
+from src.project_utils import save_object
 from src.logger import logging
 from src.exception import CustomException 
 from src.components.config_entity import DataTransformationConfig
@@ -138,6 +138,8 @@ class DataTransformation():
         ================================================================================
         '''
         try:         
+            logging.info('Beginning the data transformation process.')
+            
             # Reading the train and test datasets
             train_df = pd.read_parquet(train_path)
             test_df = pd.read_parquet(test_path)
@@ -166,6 +168,8 @@ class DataTransformation():
                 file_path=self.data_transformation_config.preprocessor_obj_path,
                 object=preprocessor_obj
             )
+            
+            logging.info('Completed the data transformation process.')
             
             return(
                 input_train_combined,

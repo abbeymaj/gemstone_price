@@ -20,4 +20,14 @@ class DataTransformationConfig():
     This class defines the path for the preprocessor object. 
     '''
     preprocessor_obj_path:str = os.path.join('artifacts', 'preprocessor.pkl')
+
+
+# Creating the config to store transformed datasets
+@dataclass
+class StoreFeatureConfig():
+    '''
+    This class defines the path for the transformed datasets.
+    '''
+    xform_train_path:str = os.path.join('feature_store', 'xform_train_set.parquet')
+    xform_test_path:str = os.path.join('feature_store', 'xform_test_set.parquet')
     
