@@ -30,4 +30,13 @@ class StoreFeatureConfig():
     '''
     xform_train_path:str = os.path.join('feature_store', 'xform_train_set.parquet')
     xform_test_path:str = os.path.join('feature_store', 'xform_test_set.parquet')
+
+
+# Creating the config to store the trained model
+@dataclass
+class ModelTrainerConfig():
+    '''
+    This class defines the path where the trained model will be stored.
+    '''
+    trained_model_file_path:str = os.path.join('artifacts', 'model.pkl')
     
