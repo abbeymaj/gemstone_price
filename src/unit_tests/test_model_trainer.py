@@ -2,6 +2,7 @@
 import os
 import pytest
 from src.components.config_entity import StoreFeatureConfig
+from src.components.config_entity import ModelTrainerConfig
 from src.components.model_trainer import ModelTrainer
 
 # Creating a function to return the transformed train data path
@@ -15,6 +16,12 @@ def xform_train_data_path():
 def xform_test_data_path():
     feature_store = StoreFeatureConfig()
     return feature_store.xform_test_path
+
+# Creating a function to return the trained model path
+@pytest.fixture(scope='function')
+def trained_model_path():
+    model_path = ModelTrainerConfig()
+    return model_path.trained_model_file_path
 
 # Creating a function to verify that the X_train column count is correct
 def test_verify_X_train_col_count():
@@ -53,3 +60,7 @@ def test_test_set_record_count():
     trainer = ModelTrainer()
     _, X_test, _, y_test = trainer.create_feature_target_datasets()
     assert X_test.shape[0] == y_test.shape[0]
+
+# Creating a function to verify that the new model path exists in the artifacts folder
+def test_verify_trained_model_path(trained_model_path):
+    assert os.path.exists(trained_model_path) is True
