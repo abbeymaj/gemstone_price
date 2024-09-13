@@ -39,7 +39,22 @@ To install the project, use the following:
 
 ## Screenshot of the Prediction Page
 
+There are two webpages, which the user can interact with, for the project. 
+
+Landing Page:
+
+This is the landing page for the project. The page provides a brief overview of the project and then allows the user to navigate to the prediction page. 
+
+The screenshot of the Landing Page is given below:
+
 ![Landing Page Screenshot Link](https://github.com/abbeymaj80/my-ml-datasets/blob/master/screenshots/gemstone_landing.jpg)
+
+Prediction Page:
+
+The prediction page enables the user to select or enter information pertaining to the gemstone whose price needs to be predicted. Once the user enters the necessary information, the user must click on the "Submit" button to generate the price prediction.
+
+The screenshot of the Prediction page is given below:
+
 ![Prediction page Screenshot Link](https://github.com/abbeymaj80/my-ml-datasets/blob/master/screenshots/gemstone_predict.jpg)
 
 
