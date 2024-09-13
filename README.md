@@ -66,3 +66,8 @@ The screenshot of the Prediction page is given below:
 ## Link to Dataset on Kaggle
 
  ![Kaggle Credit Card Fraud Detection Dataset Link](https://www.kaggle.com/competitions/playground-series-s3e8/overview)
+
+
+## Additional Reference Materials Used in the Project
+
+ ![Link to the American Gem Society](https://www.americangemsociety.org/ags-diamond-grading-system/)
