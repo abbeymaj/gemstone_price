@@ -60,6 +60,8 @@ The screenshot of the Prediction page is given below:
 
 ## Link to the High Level Design Document
 
+The High Level design document for the project can be found using the link below:
+
  ![High Level Design Document Link](https://github.com/abbeymaj80/my-ml-datasets/blob/master/Design_Docs/gemstone_price_prediction_hdd.docx)
 
 
@@ -69,5 +71,7 @@ The screenshot of the Prediction page is given below:
 
 
 ## Additional Reference Materials Used in the Project
+
+Additional reference used in the project are listed below:
 
  ![Link to the American Gem Society](https://www.americangemsociety.org/ags-diamond-grading-system/)
